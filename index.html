@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff"><title>퀵소 한 수 도전: 밀어서 다섯 칸!</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"></head>
+<body>
+<header class="topbar">
+ <div class="identity"><img class="brand-logo" src="assets/learning-logo.png" alt="수학 교구 로고" width="44" height="44"><span class="brand">QUIXO</span><h1>밀어서 다섯 칸!</h1></div>
+ <nav class="modes" aria-label="연습 모드"><button id="freeMode" aria-pressed="true">자유 연습</button><button id="challengeMode" aria-pressed="false">한 수 도전</button></nav>
+ <div class="quick-controls">
+  <button id="soundToggle" aria-pressed="true" aria-label="효과음 끄기">♪ 소리 켬</button>
+  <span id="turnLabel" class="turn-label">O 차례</span>
+  <div id="challengeActions" hidden><button id="chooseProblem" aria-haspopup="dialog">문제 선택 ▾</button><button id="hint" aria-label="힌트 보기">✦ 힌트 <small id="hintCount">0 / 2</small></button><button id="retry" title="원래 배치로 다시 도전" aria-label="다시도전">다시도전</button><button id="newProblem">다음 문제 →</button></div>
+  <button id="restart">↻ 처음부터</button>
+ </div>
+</header>
+<dialog id="problemPicker" aria-labelledby="pickerTitle">
+ <div class="picker-heading"><h2 id="pickerTitle">문제 선택</h2><button id="closePicker" aria-label="문제 선택 닫기">×</button></div>
+ <p class="picker-description">풀고 싶은 번호를 바로 골라 보세요.<br>같은 모양의 같은 번호는 항상 같은 문제예요.</p>
+ <div class="picker-players"><button id="pickerO" aria-pressed="true">O 차례 · 48문제</button><button id="pickerX" aria-pressed="false">X 차례 · 48문제</button></div>
+ <div id="problemGrid" aria-label="문제 번호 목록"></div>
+</dialog>
+<main>
+ <div class="context-bar"><span id="modeLabel">자유 연습</span><div id="playerChoices" hidden><button id="oProblem" aria-pressed="true">O 차례 문제</button><button id="xProblem" aria-pressed="false">X 차례 문제</button></div></div>
+ <section class="game-stage" aria-label="퀵소 게임">
+  <div class="board-area" id="boardArea">
+   <span class="board-engraving" aria-hidden="true">Q U I X O</span>
+   <div class="board" id="board" role="group" aria-label="5행 5열 퀵소 게임판"></div><div id="arrows"></div>
+   <div class="popup-layer" id="popup" hidden><div class="popup-card"><button id="dismissPopup" aria-label="안내 닫기">×</button><span id="popupTitle" class="popup-title">안내</span><div id="feedback" role="status" aria-live="polite" aria-atomic="true"></div></div></div>
+  </div>
+  <div class="cube-tray" id="cubeTray">
+   <div class="tray-cube-slot" id="heldSlot" aria-hidden="true"><div id="heldCube" class="held-cube"><div class="cube-face original-face" id="originalFace"></div><div class="cube-face symbol-face" id="symbolFace"></div></div></div>
+   <div class="tray-caption"><b id="phaseTitle">바깥 큐브를 골라요</b><span id="phaseDescription">밝은 큐브를 꺼내서 시작하세요.</span></div>
+   <button id="rotateCube" hidden>↻ 돌리기</button><button id="cancelSelection" hidden aria-label="선택한 큐브 되돌리기">취소</button>
+  </div>
+ </section>
+ <footer><p class="steps"><span id="step1">1 꺼내기</span><i>→</i><span id="step2">2 돌리기</span><i>→</i><span id="step3">3 밀어 넣기</span></p><details><summary>게임 방법</summary><div class="help-content"><p>바깥쪽의 내 모양 또는 빈칸 큐브만 꺼낼 수 있어요. 빈칸도 큐브예요.</p><p>꺼낸 빈 큐브를 돌려 내 모양으로 만든 뒤, 화살표를 눌러 줄 끝에서 밀어 넣어요. 꺼낸 자리에 그대로 넣을 수는 없어요.</p><p>가로·세로·대각선 다섯 칸을 이으면 승리! 상대 줄이 생기거나 O·X가 동시에 완성되면 상대가 승리해요.</p><p>힌트는 첫 번째에 추천 큐브, 두 번째에 같은 큐브의 삽입 방향을 보여줘요.</p></div></details></footer>
+</main><script src="rules.js"></script><script src="puzzles.js"></script><script src="sound.js"></script><script src="app.js"></script>
+</body></html>
